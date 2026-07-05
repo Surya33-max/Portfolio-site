@@ -2,7 +2,7 @@
 <!-- Replace https://your-domain.com/ with your live site URL before deploying -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://your-domain.com/</loc>
+    <loc>https://portfoliosite-ashen.vercel.app/</loc>
     <priority>1.00</priority>
   </url>
   <url>
