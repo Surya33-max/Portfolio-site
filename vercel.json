@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/surya-portfolio-v2.html"
+    }
+  ]
+}
