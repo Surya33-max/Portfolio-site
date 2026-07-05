@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surya G — Digital Marketer & UI/UX Designer</title>
+<meta name="theme-color" content="#13140F">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/Apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HOW TO EDIT THIS PORTFOLIO
+   - All text, skills, projects, and links live in SITE_CONTENT
+     near the bottom of this file, inside <script>.
+   - To add a new work item: drop an image into /assets/ and add
+     an entry to the "work" array. The list, filters, and the
+     hover preview all rebuild automatically.
+   - To replace the placeholder avatar: replace
+     /assets/profile-placeholder.jpg with your own photo.
+   ============================================================ */
+
+:root{
+  --paper:#F6F6F2;
+  --paper-raised:#FFFFFF;
+  --ink:#13140F;
+  --ink-soft:#4A4B44;
+  --ink-mute:#8B8C82;
+  --line:rgba(19,20,15,0.12);
+  --line-strong:rgba(19,20,15,0.3);
+  --red:#FF4429;
+  --red-soft:rgba(255,68,41,0.1);
+  --blue:#22349B;
+  --blue-soft:rgba(34,52,155,0.08);
+  --display:'Bricolage Grotesque',sans-serif;
+  --sans:'Inter',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.pointer-fine, body.pointer-fine a, body.pointer-fine button{cursor:none;}
+::selection{background:var(--ink);color:var(--paper);}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;background:none;border:none;}
+img{max-width:100%;display:block;}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px;position:relative;z-index:2;}
+@media(max-width:640px){.wrap{padding:0 22px;}}
+
+/* ---------- CUSTOM CURSOR ---------- */
+#cursorDot,#cursorRing{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%);}
+#cursorDot{width:6px;height:6px;background:var(--ink);}
+#cursorRing{width:34px;height:34px;border:1px solid var(--line-strong);transition:width .25s var(--ease),height .25s var(--ease),border-color .25s ease,background .25s ease;}
+#cursorRing.hover{width:64px;height:64px;background:rgba(19,20,15,0.05);border-color:var(--ink);}
+#cursorRing.preview{width:14px;height:14px;background:var(--ink);border-color:var(--ink);}
+@media(max-width:900px),(pointer:coarse){#cursorDot,#cursorRing{display:none;}}
+
+/* Inverted cursor for dark project media so the cursor remains visible */
+#cursorDot.invert{background:var(--paper);border:1px solid rgba(0,0,0,0.06);}
+#cursorRing.invert{border-color:var(--paper);background:rgba(246,246,242,0.06);} 
+#cursorRing.invert.hover{background:rgba(246,246,242,0.12);border-color:var(--paper);} 
+
+/* ---------- GRID GUIDES ---------- */
+.grid-guides{position:fixed;inset:0;z-index:0;pointer-events:none;max-width:1240px;margin:0 auto;left:0;right:0;display:flex;justify-content:space-between;padding:0 40px;}
+.grid-guides span{width:1px;height:100%;background:var(--line);}
+@media(max-width:900px){.grid-guides{display:none;}}
+
+/* ---------- LOADER ---------- */
+#loader{
+  position:fixed;inset:0;z-index:1000;background:var(--ink);color:var(--paper);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-mark{width:92px;height:92px;display:flex;align-items:center;justify-content:center;border-radius:22px;background:rgba(246,246,242,0.06);border:1px solid rgba(246,246,242,0.12);box-shadow:0 18px 40px -24px rgba(0,0,0,0.5);overflow:hidden;}
+.loader-mark img{width:100%;height:100%;object-fit:cover;display:block;}
+.loader-bar-track{width:200px;height:2px;background:rgba(246,246,242,0.2);overflow:hidden;}
+.loader-bar-fill{height:100%;width:0%;background:var(--red);transition:width .1s linear;}
+.loader-pct{font-family:var(--mono);font-size:11px;color:rgba(246,246,242,0.6);letter-spacing:0.12em;}
+
+/* ---------- TICKER ---------- */
+.ticker{
+  position:relative;z-index:5;background:var(--ink);color:var(--paper);overflow:hidden;
+  padding:11px 0;white-space:nowrap;border-bottom:1px solid var(--ink);
+}
+.ticker-track{display:inline-flex;animation:tickerScroll 32s linear infinite;}
+.ticker-track span{font-family:var(--mono);font-size:12.5px;letter-spacing:0.04em;padding:0 18px;display:inline-flex;align-items:center;gap:18px;}
+.ticker-track span::after{content:"—";color:var(--red);}
+@keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:1240px;margin:0 auto;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:640px){.nav-inner{padding:16px 22px;}}
+.nav-mark{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-0.01em;}
+.nav-mark .sq{width:9px;height:9px;background:var(--red);display:inline-block;}
+.nav-mark .nav-icon{width:20px;height:20px;object-fit:cover;border-radius:5px;border:1px solid var(--line);flex:0 0 auto;box-shadow:0 6px 14px -10px rgba(19,20,15,0.45);}
+.nav-links{display:flex;gap:38px;align-items:center;}
+.nav-links a{font-size:13px;font-family:var(--mono);letter-spacing:0.03em;color:var(--ink-soft);transition:color .2s ease;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{border:1px solid var(--ink);padding:9px 18px;color:var(--ink)!important;transition:all .2s ease;}
+.nav-cta:hover{background:var(--ink);color:var(--paper)!important;}
+.nav-toggle{display:none;font-size:20px;color:var(--ink);}
+@media(max-width:820px){
+  .nav-links{position:fixed;top:0;right:0;bottom:0;width:min(320px,80vw);background:var(--paper);
+    flex-direction:column;align-items:flex-start;justify-content:center;padding:40px;gap:26px;
+    transform:translateX(100%);transition:transform .4s var(--ease);border-left:1px solid var(--line);}
+  .nav-links.open{transform:translateX(0);}
+  .nav-toggle{display:block;}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding-top:64px;padding-bottom:70px;position:relative;}
+.hero-status{
+  display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;letter-spacing:0.04em;
+  border:1px solid var(--line-strong);padding:8px 14px 8px 10px;border-radius:100px;margin-bottom:38px;opacity:0;
+}
+.hero-status .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.8s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+.hero-name{
+  font-family:var(--display);font-weight:700;font-size:clamp(56px,11vw,158px);line-height:0.86;
+  letter-spacing:-0.035em;text-transform:uppercase;opacity:0;
+}
+.hero-name .accent{color:var(--red);font-style:normal;}
+.hero-roles{
+  display:flex;gap:24px;flex-wrap:wrap;margin-top:22px;font-family:var(--mono);font-size:13.5px;
+  letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-soft);opacity:0;
+}
+.hero-roles b{color:var(--ink);font-weight:500;}
+.hero-bottom{margin-top:56px;display:grid;grid-template-columns:1.3fr 0.9fr;gap:60px;align-items:start;opacity:0;}
+@media(max-width:860px){.hero-bottom{grid-template-columns:1fr;gap:32px;}}
+.hero-sub{font-size:19px;color:var(--ink-soft);max-width:520px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{
+  font-family:var(--mono);font-size:13px;letter-spacing:0.03em;padding:15px 26px;
+  display:inline-flex;align-items:center;gap:10px;transition:all .25s var(--ease);border-radius:2px;
+}
+.btn-primary{background:var(--ink);color:var(--paper);}
+.btn-primary:hover{background:var(--red);}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(19,20,15,0.04);}
+
+.hero-in .hero-status{animation:fadeUp .6s var(--ease) forwards;}
+.hero-in .hero-name{animation:fadeUp .8s var(--ease) .08s forwards;}
+.hero-in .hero-roles{animation:fadeUp .7s var(--ease) .22s forwards;}
+.hero-in .hero-bottom{animation:fadeUp .7s var(--ease) .34s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+/* ---------- SECTION SHARED ---------- */
+section{padding:110px 0;position:relative;border-bottom:1px solid var(--line);}
+@media(max-width:780px){section{padding:70px 0;}}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:56px;flex-wrap:wrap;}
+.section-tag{font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);letter-spacing:0.09em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.section-tag .n{color:var(--red);}
+.section-title{font-family:var(--display);font-weight:700;font-size:clamp(30px,4.6vw,52px);letter-spacing:-0.02em;line-height:1.06;max-width:680px;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.4fr 0.6fr;gap:60px;}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:40px;}}
+.about-quote{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.6vw,32px);line-height:1.4;letter-spacing:-0.01em;}
+.about-quote strong{font-weight:700;}
+.about-quote .mark{color:var(--red);}
+.about-p2{margin-top:26px;font-size:15.5px;color:var(--ink-soft);max-width:560px;}
+.about-stats{display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.stat{padding:20px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+.stat-num{font-family:var(--display);font-size:30px;font-weight:700;white-space:nowrap;}
+.stat-label{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:0.03em;text-align:right;line-height:1.5;}
+
+/* ---------- WORK LIST ---------- */
+.work-filters{display:flex;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+.filter-btn{font-family:var(--mono);font-size:11.5px;padding:8px 16px;border-radius:100px;border:1px solid var(--line-strong);color:var(--ink-soft);transition:all .2s ease;}
+.filter-btn:hover{border-color:var(--ink);color:var(--ink);}
+.filter-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+
+.work-list{margin-top:36px;border-top:1px solid var(--line);}
+.work-row{
+  position:relative;display:grid;grid-template-columns:56px 1fr auto auto 28px;align-items:center;gap:28px;
+  padding:30px 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding-left .3s var(--ease);
+}
+.work-row:hover{padding-left:14px;}
+.work-row.hidden{display:none;}
+.work-row-index{font-family:var(--mono);font-size:12px;color:var(--ink-mute);}
+.work-row-title{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.6vw,30px);letter-spacing:-0.01em;transition:color .25s ease;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.work-row:hover .work-row-title{color:var(--red);}
+.work-row-cat{font-family:var(--mono);font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap;}
+.work-row-year{font-family:var(--mono);font-size:12px;color:var(--ink-mute);white-space:nowrap;}
+.work-row-arrow{font-size:18px;color:var(--ink-mute);transition:transform .3s var(--ease),color .25s ease;}
+.work-row:hover .work-row-arrow{transform:rotate(45deg);color:var(--red);}
+.work-row-link{font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;border:1px solid var(--line-strong);padding:6px 10px;border-radius:100px;color:var(--ink-soft);transition:all .2s ease;white-space:nowrap;}
+.work-row-link:hover{border-color:var(--ink);color:var(--ink);background:rgba(19,20,15,0.03);}
+.work-row-thumb{display:none;width:100%;aspect-ratio:16/10;object-fit:cover;margin-top:14px;border-radius:4px;grid-column:1/-1;}
+@media(max-width:780px){
+  .work-row{grid-template-columns:1fr auto;gap:10px 16px;padding:24px 0;}
+  .work-row-cat,.work-row-year{grid-row:2;}
+  .work-row-arrow{grid-row:1;}
+  .work-row-thumb{display:block;}
+}
+.work-desc-line{grid-column:1/-1;font-size:13.5px;color:var(--ink-soft);max-width:640px;margin-top:6px;display:none;}
+.work-row:hover .work-desc-line{display:block;}
+@media(max-width:780px){.work-desc-line{display:block!important;}}
+
+.project-note{max-width:760px;margin-top:16px;font-size:15px;color:var(--ink-soft);}
+.projects-root{display:flex;flex-direction:column;gap:52px;margin-top:42px;}
+.project-category{display:flex;flex-direction:column;gap:18px;}
+.project-category-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
+.project-category-title{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.6vw,38px);letter-spacing:-0.02em;line-height:1.05;}
+.project-category-kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--ink-mute);}
+.project-group{border-top:1px solid var(--line);padding-top:24px;}
+.project-group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
+.project-group-title{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-0.01em;}
+.project-group-meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);letter-spacing:0.04em;}
+.project-grid{display:flex;gap:18px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
+.project-grid::-webkit-scrollbar{height:10px;}
+.project-grid::-webkit-scrollbar-track{background:transparent;}
+.project-grid::-webkit-scrollbar-thumb{background:rgba(19,20,15,0.16);border-radius:999px;}
+.project-grid::-webkit-scrollbar-thumb:hover{background:rgba(19,20,15,0.28);}
+.project-card{background:var(--paper-raised);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:transform .25s var(--ease),border-color .25s ease,box-shadow .25s ease;cursor:pointer;flex:0 0 min(380px,82vw);scroll-snap-align:start;}
+.project-card:hover{transform:translateY(-4px);border-color:var(--line-strong);box-shadow:0 18px 40px -28px rgba(19,20,15,0.35);}
+.project-media{position:relative;aspect-ratio:4/3;background:rgba(19,20,15,0.03);overflow:hidden;}
+.project-media img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease);}
+.project-card:hover .project-media img{transform:scale(1.04);}
+.project-badge{position:absolute;left:14px;top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;padding:6px 10px;border-radius:100px;background:rgba(255,255,255,0.88);backdrop-filter:blur(4px);color:var(--ink);}
+.project-badge.marketing{background:rgba(255,68,41,0.1);color:var(--red);}
+.project-body{padding:18px 18px 20px;}
+.project-title{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.15;letter-spacing:-0.01em;}
+.project-desc{margin-top:10px;font-size:14px;color:var(--ink-soft);}
+.project-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.project-tags span{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);border:1px solid var(--line);padding:5px 9px;border-radius:100px;}
+.project-links{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+.project-link{font-family:var(--mono);font-size:10.5px;letter-spacing:0.04em;text-transform:uppercase;border:1px solid var(--line-strong);padding:7px 10px;border-radius:100px;color:var(--ink-soft);transition:all .2s ease;}
+.project-link:hover{border-color:var(--ink);color:var(--ink);background:rgba(19,20,15,0.03);}
+.project-family{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:0.04em;text-transform:uppercase;}
+
+.promo-banner{display:block;border-radius:10px;padding:14px 18px;background:linear-gradient(90deg,rgba(34,52,155,0.08),rgba(255,68,41,0.06));border:1px solid var(--line);color:var(--ink);text-decoration:none}
+.promo-inner{display:flex;align-items:center;gap:14px;}
+.promo-badge{font-family:var(--mono);font-size:11px;color:var(--ink-soft);padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:rgba(246,246,242,0.6)}
+.promo-copy{font-family:var(--display);font-size:16px;font-weight:700}
+.promo-cta{font-family:var(--mono);font-size:12px;padding:8px 12px;border-radius:100px;border:1px solid var(--line-strong);color:var(--ink-soft);background:transparent}
+.project-media{position:relative;aspect-ratio:4/3;background:rgba(19,20,15,0.03);overflow:hidden;cursor:zoom-in}
+
+#workPreview{
+  position:fixed;top:0;left:0;width:280px;height:190px;pointer-events:none;z-index:60;
+  border-radius:6px;overflow:hidden;opacity:0;transition:opacity .3s ease;transform:translate(-50%,-50%);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.35);
+}
+#workPreview.show{opacity:1;}
+#workPreview img{width:100%;height:100%;object-fit:cover;}
+@media(max-width:900px){#workPreview{display:none;}}
+
+.add-work-hint{margin-top:30px;border:1px dashed var(--line-strong);padding:20px 22px;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);text-align:center;line-height:1.7;}
+.add-work-hint code{color:var(--blue);}
+
+#lightbox{position:fixed;inset:0;z-index:500;background:rgba(19,20,15,0.94);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:40px;}
+#lightbox.open{display:flex;}
+#lightbox img{max-width:90vw;max-height:82vh;border-radius:6px;}
+#lightbox-close{position:absolute;top:28px;right:32px;font-family:var(--mono);font-size:12px;color:var(--paper);border:1px solid rgba(246,246,242,0.4);padding:8px 16px;border-radius:100px;}
+#lightbox-close:hover{border-color:var(--paper);}
+#lightbox-prev,#lightbox-next{position:absolute;top:50%;transform:translateY(-50%);font-size:36px;color:var(--paper);background:transparent;border:0;padding:8px 12px;cursor:pointer}
+#lightbox-prev{left:28px}
+#lightbox-next{right:28px}
+#lightbox-prev:hover,#lightbox-next:hover{color:var(--red)}
+
+/* ---------- SKILLS ---------- */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+@media(max-width:780px){.skills-grid{grid-template-columns:1fr;}}
+.skill-col{background:var(--paper-raised);padding:36px;}
+.skill-col-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px;}
+.skill-col-head .idx{font-family:var(--mono);font-size:11px;color:var(--ink-mute);}
+.skill-col-head h3{font-family:var(--display);font-size:22px;font-weight:700;}
+.skill-col-desc{font-size:13.5px;color:var(--ink-mute);margin-bottom:24px;max-width:380px;}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:9px;}
+.tag{font-family:var(--mono);font-size:11.5px;padding:8px 13px;border:1px solid var(--line-strong);color:var(--ink-soft);transition:all .2s ease;border-radius:2px;}
+.tag:hover{border-color:var(--red);color:var(--red);}
+.skill-col.design .tag:hover{border-color:var(--blue);color:var(--blue);}
+
+/* ---------- EXPERIENCE ---------- */
+.exp-list{border-top:1px solid var(--line);}
+.exp-item{display:grid;grid-template-columns:170px 1fr;gap:32px;padding:32px 0;border-bottom:1px solid var(--line);}
+@media(max-width:640px){.exp-item{grid-template-columns:1fr;gap:8px;}}
+.exp-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);padding-top:4px;}
+.exp-role{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-0.01em;}
+.exp-org{font-size:13.5px;color:var(--red);margin-top:3px;margin-bottom:10px;font-family:var(--mono);}
+.exp-desc{font-size:14px;color:var(--ink-soft);max-width:600px;line-height:1.6;}
+
+/* ---------- CONTACT ---------- */
+.contact-inner{text-align:left;}
+.contact-title{font-family:var(--display);font-weight:700;font-size:clamp(34px,7vw,88px);letter-spacing:-0.03em;line-height:0.98;max-width:900px;}
+.contact-title .u{text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:8px;}
+.contact-row{margin-top:48px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px;}
+.contact-email{font-family:var(--mono);font-size:clamp(16px,2.2vw,20px);display:inline-flex;align-items:center;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--ink);transition:all .25s var(--ease);}
+.contact-email:hover{color:var(--red);border-color:var(--red);gap:18px;}
+.social-row{display:flex;gap:26px;flex-wrap:wrap;}
+.social-row a{font-family:var(--mono);font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;transition:color .2s ease;}
+.social-row a:hover{color:var(--ink);}
+
+footer{padding:30px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink-mute);}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="cursorDot"></div>
+<div id="cursorRing"></div>
+<div class="grid-guides"><span></span><span></span><span></span><span></span><span></span></div>
+
+<div id="loader">
+  <div class="loader-mark" id="loaderMark"><img src="assets/favicon.png" alt="Surya G logo"></div>
+  <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderBar"></div></div>
+  <div class="loader-pct" id="loaderPct">LOADING 0%</div>
+</div>
+
+<div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-mark"><span class="sq"></span><img class="nav-icon" src="assets/favicon.png" alt="Surya G favicon"><span id="nav-name">Surya G</span></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact" class="nav-cta magnetic">Get in touch</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero wrap" id="hero">
+  <div class="hero-status"><span class="dot"></span><span id="hero-status-text"></span></div>
+  <h1 class="hero-name" id="hero-name"></h1>
+  <div class="hero-roles" id="hero-roles"></div>
+  <div class="hero-bottom">
+    <p class="hero-sub" id="hero-sub"></p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary magnetic">View my work →</a>
+      <a href="#contact" class="btn btn-ghost magnetic">Get in touch</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-tag"><span class="n">01</span> About</div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="about-quote" id="about-quote"></p>
+        <p class="about-p2" id="about-p2"></p>
+      </div>
+      <div class="about-stats reveal" id="about-stats"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-tag"><span class="n">02</span> Toolkit</div>
+    <h2 class="section-title reveal">Two disciplines, one person.</h2>
+    <div class="skills-grid reveal" style="margin-top:48px;">
+      <div class="skill-col marketing">
+        <div class="skill-col-head"><span class="idx">M</span><h3>Marketing</h3></div>
+        <p class="skill-col-desc">The tools I use to find an audience and prove it converted.</p>
+        <div class="tag-cloud" id="skills-marketing"></div>
+      </div>
+      <div class="skill-col design">
+        <div class="skill-col-head"><span class="idx">D</span><h3>Design</h3></div>
+        <p class="skill-col-desc">The tools I use to turn that strategy into something people can actually use.</p>
+        <div class="tag-cloud" id="skills-design"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag"><span class="n">03</span> Selected work</div>
+        <h2 class="section-title reveal">Projects grouped by discipline and related project names.</h2>
+        <p class="project-note reveal">Marketing pieces are shown first, then design projects are arranged in a horizontal queue so related screens sit together without stacking.</p>
+      </div>
+    </div>
+    <div class="projects-root reveal" id="projects-root"></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-tag"><span class="n">04</span> Experience</div>
+    <h2 class="section-title reveal">Where I've worked.</h2>
+    <div class="exp-list reveal" id="exp-list" style="margin-top:48px;"></div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap contact-inner">
+    <div class="section-tag"><span class="n">05</span> Contact</div>
+    <h2 class="contact-title reveal" id="contact-title"></h2>
+    <div class="contact-row reveal">
+      <a href="#" class="contact-email magnetic" id="contact-email-link"></a>
+      <div class="social-row" id="social-row"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p id="footer-left"></p>
+  <p id="footer-right"></p>
+</footer>
+
+<div id="workPreview"><img id="workPreviewImg" src="" alt=""></div>
+
+<div id="lightbox">
+  <button id="lightbox-close">Close ✕</button>
+  <button id="lightbox-prev" aria-label="Previous">‹</button>
+  <button id="lightbox-next" aria-label="Next">›</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+/* ============================================================
+   EDIT YOUR CONTENT HERE
+   ============================================================ */
+const SITE_CONTENT = {
+
+  name: "Surya G",
+
+  hero: {
+    status: "Open to Digital Marketing Executive roles",
+    nameHtml: "SURYA<br>G<span class=\"accent\">.</span>",
+    roles: [
+      { label: "Digital marketer" },
+      { label: "UI/UX designer" },
+      { label: "Chennai, India" }
+    ],
+    subtitle: "MBA in Marketing and Analytics with a Computer Science foundation. I work across both sides of the screen: the strategy that drives traffic, and the design that keeps people there."
+  },
+
+  about: {
+    quoteHtml: "I'm <strong>Surya</strong>. I don't hand a campaign to a designer, or a design to an analyst <span class=\"mark\">—</span> I do both, end to end.",
+    paragraph2: "Currently finishing an MBA in Marketing and IT Analytics in Chennai. My internships gave me the marketing side: SEO, Ad campaigns, GA4 reporting, e-commerce end to end operations. My personal projects gave me the design side: interfaces and prototypes built in Figma, Webflow, Wix, and Framer.",
+    stats: [
+      { number: "3", label: "MARKETING & DESIGN INTERNSHIPS" },
+      { number: "5+", label: "CAMPAIGN & UI PROJECTS SHIPPED" },
+      { number: "20+", label: "TOOLS ACROSS BOTH DISCIPLINES" },
+      { number: "MBA", label: "MARKETING & ANALYTICS" }
+    ]
+  },
+
+  skills: {
+    marketing: ["SEO", "SEM", "Google Analytics 4", "Google Tag Manager", "Ads Creative", "Google Ads", "LinkedIn Marketing", "Email Marketing", "Content Marketing", "Shopify"],
+    design: ["Figma", "Adobe XD", "Framer", "Jitter", "DaVinci Resolve", "HTML & CSS", "Responsive Design", "Motion Design", "Wireframing", "Prototyping", "UI/UX Design"]
+  },
+
+  // Each work item needs an "image" pointing to a file in /assets/.
+  // "category" must be "marketing" or "design".
+  work: [
+    {
+      category: "marketing", categoryLabel: "Marketing", group: "Webflow", year: "2025",
+      title: "Webflow portfolio v1",
+      image: "assets/Port1.png",
+      description: "Early Webflow portfolio build — a compact showcase of templates and experiments.",
+      tags: ["Webflow","Portfolio"],
+      metrics: [{ value: "1", label: "snapshot" }],
+      liveUrl: "https://suryas-portfolio-site-77.webflow.io/"
+    },
+    {
+      category: "marketing", categoryLabel: "Landing page marketing", group: "Landing pages", year: "2026",
+      title: "ProjectWeb — Apple landing page", image: "assets/Apple.png",
+      description: "A live landing page project focused on premium spacing, strong hierarchy, and a simple conversion path.",
+      tags: ["Landing page", "Visual hierarchy", "Live project"],
+      metrics: [{ value: "1", label: "hero concept" }],
+      liveUrl: "https://projectweb-sooty.vercel.app/"
+    },
+    {
+      category: "marketing", categoryLabel: "Landing page marketing", group: "Landing pages", year: "2026",
+      title: "Audio landing page concept", image: "assets/Audio%20landing.png",
+      coverImage: "assets/Mockup1.jpg",
+      description: "A bold landing page for a music or audio product, balancing motion-ready composition with clear calls to action.",
+      tags: ["Landing page", "Responsive UI"],
+      metrics: [{ value: "1", label: "screen concept" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Car marketplace", year: "2026",
+      title: "Car marketplace home screen", image: "assets/Car1.png",
+      description: "A mobile-first automobile browsing screen built to surface featured vehicles, pricing, and quick filters fast.",
+      tags: ["Mobile UI", "Marketplace"],
+      metrics: [{ value: "1", label: "home screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Car marketplace", year: "2026",
+      title: "Car marketplace detail view", image: "assets/car2.png",
+      description: "A vehicle detail screen that keeps specs, pricing, and trust signals close to the primary action.",
+      tags: ["Detail page", "Conversion UI"],
+      metrics: [{ value: "1", label: "detail screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Car marketplace", year: "2025",
+      title: "Car marketplace booking flow", image: "assets/car3.png",
+      description: "A final confirmation or booking step that keeps the experience simple and reduces hesitation before checkout.",
+      tags: ["Booking flow", "UX"],
+      metrics: [{ value: "1", label: "flow screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Music app", year: "2025",
+      title: "Music app landing page", image: "assets/music%20landing1.png",
+      description: "A music-product marketing page built to spotlight discovery, playback, and premium membership value.",
+      tags: ["Landing page", "Brand UI"],
+      metrics: [{ value: "1", label: "landing screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Music app", year: "2025",
+      title: "Music library screen", image: "assets/music%20lib2.png",
+      description: "A library layout focused on fast scanning, album grouping, and simple access to saved tracks.",
+      tags: ["Library UI", "Information architecture"],
+      metrics: [{ value: "1", label: "library screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Music app", year: "2026",
+      title: "Music now-playing screen", image: "assets/music%20song3.png",
+      description: "A playback experience with larger controls, stronger focus on the current track, and intuitive media actions.",
+      tags: ["Now playing", "Interaction design"],
+      metrics: [{ value: "1", label: "player screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Tutorials", year: "2026",
+      title: "Sea tutorial screen", image: "assets/sea%20tutorial.png",
+      description: "An onboarding or tutorial flow designed to introduce the product with visual clarity and light guidance.",
+      tags: ["Tutorial UI", "Onboarding"],
+      metrics: [{ value: "1", label: "tutorial screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Travel booking", year: "2024",
+      title: "Travel booking flow", image: "assets/Travel%20book3.png",
+      coverImage: "assets/Travel%20App%20mockup.png",
+      description: "A booking step that keeps the path to confirmation short while still showing the details users need.",
+      tags: ["Booking flow", "Travel UX"],
+      metrics: [{ value: "1", label: "booking screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Travel booking", year: "2024",
+      title: "Travel home screen", image: "assets/Travel%20home1.png",
+      description: "A travel discovery home page with destination-led browsing and quick access to primary actions.",
+      tags: ["Home screen", "Travel app"],
+      metrics: [{ value: "1", label: "home screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Travel booking", year: "2024",
+      title: "Travel location details", image: "assets/Travel%20location2.png",
+      description: "A destination detail layout that emphasizes location, visual appeal, and trip planning information.",
+      tags: ["Detail page", "Travel app"],
+      metrics: [{ value: "1", label: "details screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Social app", year: "2023",
+      title: "Social home screen", image: "assets/socialhome1.png",
+      description: "A social feed home designed to keep posts, stories, and navigation easy to scan on mobile.",
+      tags: ["Feed UI", "Mobile layout"],
+      metrics: [{ value: "1", label: "home screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Social app", year: "2023",
+      title: "Social profile screen", image: "assets/socialprofile2.png",
+      description: "A profile layout that puts identity, highlights, and follow actions into one clean visual system.",
+      tags: ["Profile UI", "Social app"],
+      metrics: [{ value: "1", label: "profile screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Social app", year: "2023",
+      title: "Social chat screen", image: "assets/socialchats2.png",
+      description: "A messaging layout that keeps conversations and quick reply actions easy to use in one view.",
+      tags: ["Chat UI", "Interaction design"],
+      metrics: [{ value: "1", label: "chat screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Movie booking", year: "2022",
+      title: "Movie home screen", image: "assets/moviehome1.png",
+      description: "A movie discovery home that surfaces featured films, genres, and quick actions with minimal friction.",
+      tags: ["Browse UI", "Entertainment"],
+      metrics: [{ value: "1", label: "home screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Movie booking", year: "2022",
+      title: "Movie details screen", image: "assets/moviedetails2.png",
+      description: "A film detail page focused on trailers, ratings, and clear booking calls to action.",
+      tags: ["Detail page", "Booking UI"],
+      metrics: [{ value: "1", label: "details screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Movie booking", year: "2022",
+      title: "Movie seats screen", image: "assets/movieseats4.png",
+      description: "A seat selection layout designed to make availability and booking choices quick to understand.",
+      tags: ["Seat map", "Ticket flow"],
+      metrics: [{ value: "1", label: "seat screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Movie booking", year: "2022",
+      title: "Movie theaters screen", image: "assets/movietheters3.png",
+      description: "A theater selection view that keeps venue choice, showtimes, and conversion points easy to scan.",
+      tags: ["Showtime UI", "Ticket flow"],
+      metrics: [{ value: "1", label: "theaters screen" }]
+    },
+    {
+      category: "design", categoryLabel: "UI/UX design", group: "Movie booking", year: "2022",
+      title: "Movie ticket screen", image: "assets/movieticket5.png",
+      description: "A final ticket display designed to surface booking confirmation details cleanly.",
+      tags: ["Ticket UI", "Confirmation"],
+      metrics: [{ value: "1", label: "ticket screen" }]
+    }
+  ],
+
+  experience: [
+    { date: "Feb 2026 – Apr 2026", role: "E-Commerce & Digital Marketing Intern", org: "Thrise, Chennai", description: "Managed Shopify operations, ran on-page SEO, and monitored traffic and conversions weekly using GA4 and Google Tag Manager." },
+    { date: "Jun 2025 – Jul 2025", role: "Digital Marketing Intern", org: "Sulekha, Chennai", description: "Ran brand visibility audits for 80+ businesses and managed 80+ hyperlocal listings across microsites, tracking KPIs through Excel dashboards." },
+    { date: "Mar 2023 – Apr 2023", role: "Web Designer Intern", org: "Exposys Data Labs, Bangalore", description: "Built responsive web pages and worked with the design team to turn wireframes into functional, cross-device consistent pages." }
+  ],
+
+  contact: { titleHtml: "Let's make something <span class=\"u\">worth measuring.</span>", email: "suryalh44@gmail.com" },
+
+  social: [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/surya-g-b08a83215" },
+    { label: "GitHub", url: "https://github.com/Surya33-max" },
+    { label: "Instagram", url: "https://www.instagram.com/s_ury.a07" }
+  ],
+
+  footer: { left: "Surya G, Chennai, India", right: "2026" }
+};
+
+/* ============================================================
+   RENDER LOGIC
+   ============================================================ */
+document.getElementById('nav-name').textContent = SITE_CONTENT.name;
+document.getElementById('hero-status-text').textContent = SITE_CONTENT.hero.status;
+document.getElementById('hero-name').innerHTML = SITE_CONTENT.hero.nameHtml;
+document.getElementById('hero-sub').textContent = SITE_CONTENT.hero.subtitle;
+const rolesEl = document.getElementById('hero-roles');
+SITE_CONTENT.hero.roles.forEach((r,i) => {
+  const span = document.createElement('span');
+  span.innerHTML = (i===0?'<b>':'') + r.label + (i===0?'</b>':'');
+  rolesEl.appendChild(span);
+});
+
+document.getElementById('about-quote').innerHTML = SITE_CONTENT.about.quoteHtml;
+document.getElementById('about-p2').textContent = SITE_CONTENT.about.paragraph2;
+const statsEl = document.getElementById('about-stats');
+SITE_CONTENT.about.stats.forEach(s => {
+  const div = document.createElement('div'); div.className = 'stat';
+  div.innerHTML = `<div class="stat-num">${s.number}</div><div class="stat-label">${s.label}</div>`;
+  statsEl.appendChild(div);
+});
+
+const mEl = document.getElementById('skills-marketing');
+SITE_CONTENT.skills.marketing.forEach(s => { const sp = document.createElement('span'); sp.className='tag'; sp.textContent=s; mEl.appendChild(sp); });
+const dEl = document.getElementById('skills-design');
+SITE_CONTENT.skills.design.forEach(s => { const sp = document.createElement('span'); sp.className='tag'; sp.textContent=s; dEl.appendChild(sp); });
+
+// Ticker: combine skills into a scrolling strip, duplicated for seamless loop
+const tickerItems = [...SITE_CONTENT.skills.marketing, ...SITE_CONTENT.skills.design, SITE_CONTENT.hero.status];
+const tickerEl = document.getElementById('tickerTrack');
+[...tickerItems, ...tickerItems].forEach(t => { const sp = document.createElement('span'); sp.textContent = t; tickerEl.appendChild(sp); });
+
+// Project grid grouped by category and naming family
+const projectsRoot = document.getElementById('projects-root');
+const categoryOrder = ['marketing', 'design'];
+const categoryMeta = {
+  marketing: { title: 'Marketing', kicker: 'Landing pages and conversion-focused work' },
+  design: { title: 'Design', kicker: 'UI/UX screens grouped by project name' }
+};
+
+// Promo banner linking to the requested Webflow live site
+const promoLink = 'https://suryas-portfolio-site-77.webflow.io/';
+const promoEl = document.createElement('a');
+promoEl.className = 'promo-banner reveal';
+promoEl.href = promoLink;
+promoEl.target = '_blank';
+promoEl.rel = 'noopener';
+promoEl.innerHTML = `
+  <div class="promo-inner">
+    <div class="promo-badge">Live site</div>
+    <div class="promo-copy">Visit my Webflow demo site</div>
+    <div style="flex:1"></div>
+    <div><button class="promo-cta">Open →</button></div>
+  </div>
+`;
+projectsRoot.appendChild(promoEl);
+
+function renderProjectCard(w){
+  const metricsStr = w.metrics.map(m => `${m.value} ${m.label}`).join(' · ');
+  const card = document.createElement('article');
+  card.className = 'project-card reveal';
+  card.dataset.image = w.image;
+  card.innerHTML = `
+    <div class="project-media">
+      <img src="${w.image}" alt="${w.title}" loading="lazy">
+      <span class="project-badge ${w.category === 'marketing' ? 'marketing' : ''}">${w.categoryLabel}</span>
+    </div>
+    <div class="project-body">
+      <div class="project-title">${w.title}</div>
+      <div class="project-desc">${w.description}</div>
+      <div class="project-tags">${w.tags.map(t => `<span>${t}</span>`).join('')}</div>
+      <div class="project-links">
+        <span class="project-family">${w.group}</span>
+        ${w.liveUrl ? `<a class="project-link" href="${w.liveUrl}" target="_blank" rel="noopener">Live site ↗</a>` : `<span class="project-family">${metricsStr}</span>`}
+      </div>
+    </div>
+  `;
+  if (w.liveUrl) {
+    const link = card.querySelector('.project-link');
+    link.addEventListener('click', (e) => e.stopPropagation());
+  }
+  card.addEventListener('click', () => openLightbox(w.image, w.title));
+  return card;
+}
+
+categoryOrder.forEach(category => {
+  const catItems = SITE_CONTENT.work.filter(w => w.category === category);
+  if (!catItems.length) return;
+
+  const catWrap = document.createElement('section');
+  catWrap.className = 'project-category';
+  catWrap.innerHTML = `
+    <div class="project-category-head">
+      <div>
+        <div class="project-category-kicker">${category}</div>
+        <div class="project-category-title">${categoryMeta[category].title}</div>
+      </div>
+      <div class="project-category-kicker">${categoryMeta[category].kicker}</div>
+    </div>
+  `;
+
+  // collect items by group name (so multiple screenshots become one project folder)
+  const groups = [];
+  catItems.forEach(item => {
+    let group = groups.find(g => g.name === item.group);
+    if (!group) { group = { name: item.group, items: [] }; groups.push(group); }
+    group.items.push(item);
+  });
+
+  // For each group, render a single compact card (thumbnail) that opens a gallery
+  groups.forEach(group => {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'project-group';
+    groupEl.innerHTML = `
+      <div class="project-group-head">
+        <div class="project-group-title">${group.name}</div>
+        <div class="project-group-meta">${group.items.length} related project${group.items.length === 1 ? '' : 's'}</div>
+      </div>
+    `;
+
+    const grid = document.createElement('div');
+    grid.className = 'project-grid';
+
+    function renderGroupCard(gr){
+      const first = gr.items[0];
+      const cover = first.coverImage || first.image;
+      const card = document.createElement('article');
+      card.className = 'project-card reveal';
+      card.innerHTML = `
+        <div class="project-media">
+          <img src="${cover}" alt="${first.title} thumbnail" loading="lazy">
+          <span class="project-badge ${first.category === 'marketing' ? 'marketing' : ''}">${first.categoryLabel}</span>
+          <span class="project-badge" style="right:12px;left:auto;background:rgba(0,0,0,0.06);color:var(--ink-mute);">${gr.items.length} • screenshots</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">${gr.name}</div>
+          <div class="project-desc">${first.description}</div>
+          <div class="project-tags">${[...new Set(gr.items.flatMap(i=>i.tags||[]))].map(t=>`<span>${t}</span>`).join('')}</div>
+          <div class="project-links">
+            <span class="project-family">${first.group}</span>
+            ${first.liveUrl ? `<a class="project-link" href="${first.liveUrl}" target="_blank" rel="noopener">Live site ↗</a>` : `<span class="project-family">${gr.items.length} screens</span>`}
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openGallery(gr.items.map(i => i.image), gr.name));
+      return card;
+    }
+
+    grid.appendChild(renderGroupCard(group));
+    groupEl.appendChild(grid);
+    catWrap.appendChild(groupEl);
+  });
+
+  projectsRoot.appendChild(catWrap);
+});
+
+// Lightbox for single image and gallery support
+let galleryImages = [];
+let galleryIndex = 0;
+function openLightbox(src, alt){
+  galleryImages = [src]; galleryIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function openGallery(images, title){
+  galleryImages = images.slice();
+  galleryIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function updateLightbox(){
+  const img = document.getElementById('lightbox-img');
+  img.src = galleryImages[galleryIndex] || '';
+  img.alt = '';
+}
+
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  // remove inverted cursor when lightbox closes
+  const cd = document.getElementById('cursorDot');
+  const cr = document.getElementById('cursorRing');
+  if(cd) cd.classList.remove('invert');
+  if(cr) cr.classList.remove('invert');
+}
+
+document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+document.getElementById('lightbox').addEventListener('click', (e) => { if(e.target.id === 'lightbox') closeLightbox(); });
+document.getElementById('lightbox-prev').addEventListener('click', (e) => { e.stopPropagation(); if(galleryImages.length){ galleryIndex = (galleryIndex-1+galleryImages.length)%galleryImages.length; updateLightbox(); } });
+document.getElementById('lightbox-next').addEventListener('click', (e) => { e.stopPropagation(); if(galleryImages.length){ galleryIndex = (galleryIndex+1)%galleryImages.length; updateLightbox(); } });
+document.addEventListener('keydown', (e) => {
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'ArrowRight') { galleryIndex = (galleryIndex+1)%galleryImages.length; updateLightbox(); }
+  if(e.key === 'ArrowLeft') { galleryIndex = (galleryIndex-1+galleryImages.length)%galleryImages.length; updateLightbox(); }
+  if(e.key === 'Escape') closeLightbox();
+});
+
+// Ensure cursor is inverted while lightbox is open (dark overlay)
+const origOpenGallery = openGallery;
+openGallery = function(images, title){
+  origOpenGallery(images, title);
+  const cd = document.getElementById('cursorDot');
+  const cr = document.getElementById('cursorRing');
+  if(cd) cd.classList.add('invert');
+  if(cr) cr.classList.add('invert');
+}
+
+const origOpenLightbox = openLightbox;
+openLightbox = function(src, alt){
+  origOpenLightbox(src, alt);
+  const cd = document.getElementById('cursorDot');
+  const cr = document.getElementById('cursorRing');
+  if(cd) cd.classList.add('invert');
+  if(cr) cr.classList.add('invert');
+}
+
+// Experience
+const expEl = document.getElementById('exp-list');
+SITE_CONTENT.experience.forEach(e => {
+  const item = document.createElement('div'); item.className = 'exp-item';
+  item.innerHTML = `<div class="exp-date">${e.date}</div><div><div class="exp-role">${e.role}</div><div class="exp-org">${e.org}</div><div class="exp-desc">${e.description}</div></div>`;
+  expEl.appendChild(item);
+});
+
+// Contact + social
+document.getElementById('contact-title').innerHTML = SITE_CONTENT.contact.titleHtml;
+document.getElementById('contact-email-link').innerHTML = SITE_CONTENT.contact.email + ' <span>↗</span>';
+document.getElementById('contact-email-link').href = 'mailto:' + SITE_CONTENT.contact.email;
+const socialEl = document.getElementById('social-row');
+SITE_CONTENT.social.forEach(s => {
+  const a = document.createElement('a'); a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+  a.innerHTML = `${s.label} <span class="arrow">↗</span>`; socialEl.appendChild(a);
+});
+document.getElementById('footer-left').textContent = SITE_CONTENT.footer.left;
+document.getElementById('footer-right').textContent = SITE_CONTENT.footer.right;
+
+// Mobile nav
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ============================================================
+   CUSTOM CURSOR + MAGNETIC BUTTONS (desktop / fine pointer only)
+   ============================================================ */
+const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+if (isFinePointer){
+  document.body.classList.add('pointer-fine');
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = window.innerWidth/2, my = window.innerHeight/2, rx = mx, ry = my;
+  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`; });
+  function loopRing(){ rx += (mx-rx)*0.18; ry += (my-ry)*0.18; ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`; requestAnimationFrame(loopRing); }
+  loopRing();
+
+  document.querySelectorAll('a, button, .work-row').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.magnetic').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const r = el.getBoundingClientRect();
+      const relX = e.clientX - (r.left + r.width/2);
+      const relY = e.clientY - (r.top + r.height/2);
+      el.style.transform = `translate(${relX*0.25}px, ${relY*0.35}px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = 'translate(0,0)'; });
+  });
+
+  // Work row hover preview image
+  const preview = document.getElementById('workPreview');
+  const previewImg = document.getElementById('workPreviewImg');
+  let pvx = mx, pvy = my, pvtx = mx, pvty = my;
+  document.querySelectorAll('.work-row').forEach(row => {
+    row.addEventListener('mouseenter', () => {
+      previewImg.src = row.dataset.image;
+      preview.classList.add('show');
+      ring.classList.add('preview');
+    });
+    row.addEventListener('mouseleave', () => {
+      preview.classList.remove('show');
+      ring.classList.remove('preview');
+    });
+  });
+  // Ensure cursor remains visible on dark project cards/media by inverting its colors
+  document.querySelectorAll('.project-media, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('invert'); ring.classList.add('invert'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('invert'); ring.classList.remove('invert'); });
+  });
+  window.addEventListener('mousemove', (e) => { pvtx = e.clientX; pvty = e.clientY; });
+  function loopPreview(){
+    pvx += (pvtx-pvx)*0.16; pvy += (pvty-pvy)*0.16;
+    preview.style.left = pvx + 'px'; preview.style.top = pvy + 'px';
+    requestAnimationFrame(loopPreview);
+  }
+  loopPreview();
+} else {
+  document.getElementById('cursorDot').style.display = 'none';
+  document.getElementById('cursorRing').style.display = 'none';
+}
+
+/* ============================================================
+   LOADER SEQUENCE
+   ============================================================ */
+(function(){
+  const mark = document.getElementById('loaderMark');
+  if (mark) { mark.style.opacity = '0'; requestAnimationFrame(() => { mark.style.transition = 'opacity .45s ease'; mark.style.opacity = '1'; }); }
+
+  const bar = document.getElementById('loaderBar');
+  const pct = document.getElementById('loaderPct');
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.random()*18 + 6;
+    if (progress >= 100){
+      progress = 100;
+      clearInterval(interval);
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('done');
+        document.getElementById('hero').classList.add('hero-in');
+      }, 250);
+    }
+    bar.style.width = progress + '%';
+    pct.textContent = 'LOADING ' + Math.floor(progress) + '%';
+  }, 140);
+})();
+
+/* ============================================================
+   SEO / Structured Data Enhancements (description, OG, Twitter,
+   geo tags, and JSON-LD). Uses SITE_CONTENT where possible.
+   Update host/base URL placeholders after deployment.
+   ============================================================ */
+(function(){
+  const shortDesc = SITE_CONTENT.hero.subtitle.slice(0,155);
+
+  function upsertMeta(name, content, attr='name'){
+    let m = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!m){ m = document.createElement('meta'); m.setAttribute(attr, name); document.head.appendChild(m); }
+    m.content = content;
+  }
+
+  upsertMeta('description', shortDesc);
+  upsertMeta('robots', 'index, follow');
+  upsertMeta('geo.position', '13.0827;80.2707');
+  upsertMeta('geo.placename', 'Chennai');
+  upsertMeta('geo.region', 'IN-TN');
+
+  // canonical link
+  if (!document.querySelector('link[rel="canonical"]')){
+    const l = document.createElement('link'); l.rel = 'canonical'; l.href = window.location.href; document.head.appendChild(l);
+  }
+
+  // Open Graph
+  upsertMeta('og:title', SITE_CONTENT.name + ' — Digital Marketer & UI/UX Designer', 'property');
+  upsertMeta('og:description', shortDesc, 'property');
+  upsertMeta('og:type', 'website', 'property');
+  upsertMeta('og:url', window.location.href, 'property');
+  const firstImage = (SITE_CONTENT.work && SITE_CONTENT.work[0] && SITE_CONTENT.work[0].image) || '';
+  if(firstImage) upsertMeta('og:image', new URL(firstImage, window.location.href).href, 'property');
+
+  // Twitter card
+  upsertMeta('twitter:card', 'summary_large_image');
+  upsertMeta('twitter:title', SITE_CONTENT.name + ' — Digital Marketer & UI/UX Designer');
+  upsertMeta('twitter:description', shortDesc);
+  if(firstImage) upsertMeta('twitter:image', new URL(firstImage, window.location.href).href);
+
+  // sitemap link (template) — update after deploying
+  if (!document.querySelector('link[rel="sitemap"]')){
+    const s = document.createElement('link'); s.rel = 'sitemap'; s.href = 'sitemap.xml'; document.head.appendChild(s);
+  }
+
+  // JSON-LD structured data (Person + WebSite)
+  const sd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": SITE_CONTENT.name,
+        "jobTitle": "Digital marketer & UI/UX designer",
+        "address": {"@type":"PostalAddress","addressLocality":"Chennai","addressCountry":"IN"},
+        "sameAs": SITE_CONTENT.social.map(s=>s.url || s)
+      },
+      {
+        "@type": "WebSite",
+        "name": SITE_CONTENT.name,
+        "url": window.location.origin || window.location.href,
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": (window.location.origin || window.location.href) + '/?s={search_term_string}',
+          "query-input": 'required name=search_term_string'
+        }
+      }
+    ]
+  };
+  const sdScript = document.createElement('script'); sdScript.type = 'application/ld+json'; sdScript.text = JSON.stringify(sd); document.head.appendChild(sdScript);
+})();
+</script>
+
+</body>
+</html>
