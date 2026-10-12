@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace https://your-domain.com/ with your live site URL before deploying -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://portfoliosite-ashen.vercel.app/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://portfoliosite-ashen.vercel.app/surya-portfolio-v2.html/</loc>
-    <priority>0.80</priority>
+    <loc>https://portfoliosite-ashen.vercel.app/shop</loc>
+    <priority>0.90</priority>
   </url>
 </urlset>
