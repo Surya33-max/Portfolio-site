@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/shop",
+      "destination": "/shop.html"
+    },
+    {
       "source": "/",
       "destination": "/surya-portfolio-v2.html"
     }

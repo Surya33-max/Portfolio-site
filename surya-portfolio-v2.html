@@ -323,6 +323,30 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
   
+
+/* Portfolio + shop integration */
+.nav-shop{display:inline-flex;align-items:center;gap:6px;color:var(--red)!important;font-weight:700}
+.nav-shop span{font-size:14px}
+.portfolio-shop{padding:110px 0 120px;background:#ecece5;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.portfolio-shop .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:38px}
+.portfolio-shop .section-tag{margin-bottom:18px}
+.portfolio-shop .section-title{max-width:680px}
+.portfolio-shop .project-note{max-width:590px;margin-top:14px}
+.portfolio-shop .shop-all{display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border:1px solid var(--ink);border-radius:2px;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;transition:background .2s,color .2s}
+.portfolio-shop .shop-all:hover{background:var(--ink);color:var(--paper)}
+.portfolio-shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.portfolio-product-card{display:flex;flex-direction:column;min-width:0;padding:14px;background:rgba(255,255,255,.58);border:1px solid var(--line);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.portfolio-product-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(19,20,15,.08)}
+.portfolio-product-image{aspect-ratio:1.4;background:#e5e5ed;display:grid;place-items:center;overflow:hidden;margin-bottom:18px}
+.portfolio-product-image img{width:100%;height:100%;object-fit:cover}
+.portfolio-product-card .product-kicker{font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.portfolio-product-card h3{font:700 clamp(22px,2.5vw,30px)/1.1 var(--display);letter-spacing:-.04em;margin:10px 0}
+.portfolio-product-card p{font-size:13px;color:var(--ink-soft);line-height:1.7;margin:0 0 20px}
+.portfolio-product-card .product-status{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--line);font:10px var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.portfolio-product-card .product-status strong{color:var(--red);font-weight:500}
+@media(max-width:900px){.portfolio-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-shop .section-head{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.portfolio-shop{padding:76px 0}.portfolio-shop-grid{grid-template-columns:1fr}.portfolio-shop .shop-all{width:100%;justify-content:center}.portfolio-product-image{aspect-ratio:1.55}}
+
 </style>
 </head>
 <body>
@@ -346,6 +370,7 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#work">Work</a>
+      <a href="#shop" class="nav-shop">Shop <span aria-hidden="true">↗</span></a>
       <a href="#experience">Experience</a>
       <a href="#contact" class="nav-cta magnetic">Get in touch</a>
     </div>
@@ -408,6 +433,40 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="projects-root" id="projects-root"></div>
+  </div>
+</section>
+
+
+<section id="shop" class="portfolio-shop">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-tag"><span class="n">↗</span> Studio products</div>
+        <h2 class="section-title reveal">Useful tools for creative work.</h2>
+        <p class="project-note reveal">Alongside client work and experiments, I’m building digital products for designers, editors and makers. Explore the Arqora collection.</p>
+      </div>
+      <a class="shop-all magnetic" href="/shop">Explore the shop <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="portfolio-shop-grid">
+      <a class="portfolio-product-card" href="/shop#products">
+        <div class="portfolio-product-image"><img src="shop-assets/products/whiprush.svg" alt="WhipRush motion effect artwork" loading="lazy"></div>
+        <span class="product-kicker">01 / Motion & video</span><h3>WhipRush</h3>
+        <p>Expressive transition concepts for DaVinci Resolve Fusion workflows.</p>
+        <div class="product-status"><strong>In development</strong><span>Explore ↗</span></div>
+      </a>
+      <a class="portfolio-product-card" href="/shop#products">
+        <div class="portfolio-product-image"><img src="shop-assets/products/form-ui-kit.svg" alt="Form UI Kit interface artwork" loading="lazy"></div>
+        <span class="product-kicker">02 / UI design</span><h3>Form UI Kit</h3>
+        <p>A considered interface kit concept for building clearer forms and product flows.</p>
+        <div class="product-status"><strong>Concept</strong><span>Explore ↗</span></div>
+      </a>
+      <a class="portfolio-product-card" href="/shop#products">
+        <div class="portfolio-product-image"><img src="shop-assets/products/brandboard.svg" alt="Brandboard identity artwork" loading="lazy"></div>
+        <span class="product-kicker">03 / Brand systems</span><h3>Brandboard</h3>
+        <p>A compact identity workspace concept for keeping visual systems consistent.</p>
+        <div class="product-status"><strong>Concept</strong><span>Explore ↗</span></div>
+      </a>
+    </div>
   </div>
 </section>
 
