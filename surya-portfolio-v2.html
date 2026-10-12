@@ -88,7 +88,7 @@ img{max-width:100%;display:block;}
 }
 .ticker-track{display:inline-flex;animation:tickerScroll 32s linear infinite;}
 .ticker-track span{font-family:var(--mono);font-size:12.5px;letter-spacing:0.04em;padding:0 18px;display:inline-flex;align-items:center;gap:18px;}
-.ticker-track span::after{content:"—";color:var(--red);}
+.ticker-track span::after{content:"-";color:var(--red);}
 @keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ---------- NAV ---------- */
@@ -347,6 +347,39 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
 @media(max-width:900px){.portfolio-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.portfolio-shop .section-head{align-items:flex-start;flex-direction:column}}
 @media(max-width:560px){.portfolio-shop{padding:76px 0}.portfolio-shop-grid{grid-template-columns:1fr}.portfolio-shop .shop-all{width:100%;justify-content:center}.portfolio-product-image{aspect-ratio:1.55}}
 
+
+/* ---------- UNIFIED PORTFOLIO + ARQORA REDESIGN ---------- */
+:root{--paper:#F1F2F6;--paper-raised:#FAFAFC;--ink:#202334;--ink-soft:#596174;--ink-mute:#81889A;--line:rgba(43,48,69,.12);--line-strong:rgba(43,48,69,.28);--red:#6C5CE7;--red-soft:rgba(108,92,231,.10);--blue:#9CE6D1;--blue-soft:rgba(156,230,209,.18)}
+body{background:var(--paper);color:var(--ink)}::selection{background:#6C5CE7;color:#fff}
+.grid-guides span{background:rgba(43,48,69,.055)}.ticker{background:#202334;border-color:#202334}.ticker-track span::after{color:#9CE6D1}
+nav{background:rgba(241,242,246,.9);backdrop-filter:blur(18px)}.nav-mark .sq{background:#6C5CE7;border-radius:3px}
+.nav-cta{border-radius:999px;background:#202334;color:#fff!important;border-color:#202334}.nav-cta:hover{background:#6C5CE7;border-color:#6C5CE7;color:#fff!important}
+.hero{padding-top:88px;padding-bottom:100px}.hero-status{border-color:rgba(108,92,231,.24);background:rgba(255,255,255,.5);border-radius:999px}.hero-status .dot{background:#6C5CE7}
+.hero-name{font-size:clamp(58px,12vw,164px);letter-spacing:-.065em}.hero-name .accent{color:#6C5CE7}
+.hero-roles{gap:12px}.hero-roles span{border:1px solid var(--line);border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.4);font-size:11px}
+.hero-sub{font-size:clamp(17px,1.7vw,21px);line-height:1.75;max-width:590px}
+.btn{border-radius:999px;padding:15px 22px}.btn-primary{background:#6C5CE7;color:#fff}.btn-primary:hover{background:#202334}.btn-ghost{border-color:var(--line-strong);border-radius:999px}
+section{padding:100px 0}.section-tag{color:#72798D}.section-tag .n{color:#6C5CE7}.section-title{letter-spacing:-.045em}
+.skills-grid{gap:22px}.skill-col{border-radius:22px!important;background:#F1F2F6!important;box-shadow:8px 8px 18px #d6d8e0,-8px -8px 18px #fff!important;border:1px solid rgba(255,255,255,.7)!important}
+.skill-col-head .idx{background:#6C5CE7!important;color:white!important;border-radius:10px!important}.tag-cloud span,.tag-cloud .tag{border-radius:999px!important}
+.project-category{gap:20px}.project-category-title{letter-spacing:-.045em}
+.project-card{border-radius:18px!important;background:#FAFAFC!important;border-color:rgba(43,48,69,.09)!important;box-shadow:0 8px 24px rgba(43,48,69,.035)}
+.project-card:hover{box-shadow:0 20px 42px rgba(43,48,69,.11)!important;border-color:rgba(108,92,231,.4)!important}.project-card:hover .project-title{color:#6C5CE7!important}
+.project-media{background:#e4e6ee!important}.work-row:hover .work-row-title{color:#6C5CE7}
+.portfolio-shop{background:linear-gradient(145deg,#e7e9f1 0%,#f1f2f6 55%,#e4f3ee 100%);padding:112px 0 120px}
+.portfolio-shop .section-title{max-width:720px}.portfolio-shop .shop-all{border-radius:999px;border-color:#6C5CE7;color:#5142c9}
+.portfolio-shop .shop-all:hover{background:#6C5CE7;color:#fff}
+.portfolio-shop-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.portfolio-product-card{padding:14px;border-radius:20px;background:rgba(250,250,252,.82);border:1px solid rgba(255,255,255,.9);box-shadow:6px 6px 16px rgba(143,149,168,.13),-5px -5px 14px rgba(255,255,255,.85)}
+.portfolio-product-card:hover{transform:translateY(-6px);box-shadow:10px 14px 28px rgba(95,91,138,.14)}
+.portfolio-product-image{border-radius:14px;background:#e8e9f0}.portfolio-product-card h3{letter-spacing:-.05em}
+.portfolio-product-card .product-status strong{color:#6C5CE7}.portfolio-product-card .product-status span{color:#71798b}
+.exp-item{border-color:var(--line)}.exp-org{color:#6C5CE7}.contact-title .u{text-decoration-color:#6C5CE7}
+.contact-email{border-color:#6C5CE7}.contact-email:hover{color:#6C5CE7;border-color:#6C5CE7}.social-row a:hover{color:#6C5CE7}
+footer{border-top:1px solid var(--line)}
+@media(max-width:900px){.hero{padding-top:62px;padding-bottom:72px}.portfolio-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){section{padding:76px 0}.portfolio-shop-grid{grid-template-columns:1fr}.hero-name{font-size:clamp(54px,16vw,100px)}.portfolio-product-image{aspect-ratio:1.55}.contact-row{align-items:flex-start}}
+
 </style>
 </head>
 <body>
@@ -370,7 +403,7 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#work">Work</a>
-      <a href="#shop" class="nav-shop">Shop <span aria-hidden="true">↗</span></a>
+      <a href="#shop" class="nav-shop">Arqora <span aria-hidden="true">↗</span></a>
       <a href="#experience">Experience</a>
       <a href="#contact" class="nav-cta magnetic">Get in touch</a>
     </div>
@@ -407,7 +440,7 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
 <section id="skills">
   <div class="wrap">
     <div class="section-tag"><span class="n">02</span> Toolkit</div>
-    <h2 class="section-title reveal">Two disciplines, one person.</h2>
+    <h2 class="section-title reveal">Strategy meets design.</h2>
     <div class="skills-grid reveal" style="margin-top:48px;">
       <div class="skill-col marketing">
         <div class="skill-col-head"><span class="idx">M</span><h3>Marketing</h3></div>
@@ -428,8 +461,8 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
     <div class="section-head">
       <div>
         <div class="section-tag"><span class="n">03</span> Selected work</div>
-        <h2 class="section-title reveal">Projects grouped by discipline and related project names.</h2>
-        <p class="project-note reveal">Projects are in the below .</p>
+        <h2 class="section-title reveal">Selected work across marketing, design and digital products.</h2>
+        <p class="project-note reveal">A selection of live builds, interface concepts and creative experiments.</p>
       </div>
     </div>
     <div class="projects-root" id="projects-root"></div>
@@ -441,30 +474,42 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-tag"><span class="n">↗</span> Studio products</div>
-        <h2 class="section-title reveal">Useful tools for creative work.</h2>
-        <p class="project-note reveal">Alongside client work and experiments, I’m building digital products for designers, editors and makers. Explore the Arqora collection.</p>
+        <div class="section-tag"><span class="n">04</span> Arqora Studio / Digital products</div>
+        <h2 class="section-title reveal">Ideas from the portfolio, built into useful tools.</h2>
+        <p class="project-note reveal">Arqora is my independent digital studio for creator tools, interface systems and web experiences. It lives here alongside my marketing and design work, not on a separate site.</p>
       </div>
-      <a class="shop-all magnetic" href="/shop">Explore the shop <span aria-hidden="true">↗</span></a>
+      <a class="shop-all magnetic" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
     </div>
     <div class="portfolio-shop-grid">
-      <a class="portfolio-product-card" href="/shop#products">
-        <div class="portfolio-product-image"><img src="shop-assets/products/whiprush.svg" alt="WhipRush motion effect artwork" loading="lazy"></div>
-        <span class="product-kicker">01 / Motion & video</span><h3>WhipRush</h3>
-        <p>Expressive transition concepts for DaVinci Resolve Fusion workflows.</p>
-        <div class="product-status"><strong>In development</strong><span>Explore ↗</span></div>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20WhipRush">
+        <div class="portfolio-product-image"><img src="shop-assets/products/whiprush.svg" alt="WhipRush motion effect concept" loading="lazy"></div>
+        <span class="product-kicker">01 / Motion and video</span><h3>WhipRush</h3><p>A directional whip transition concept for punchy DaVinci Resolve Fusion edits.</p>
+        <div class="product-status"><strong>In development</strong><span>Enquire ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="/shop#products">
-        <div class="portfolio-product-image"><img src="shop-assets/products/form-ui-kit.svg" alt="Form UI Kit interface artwork" loading="lazy"></div>
-        <span class="product-kicker">02 / UI design</span><h3>Form UI Kit</h3>
-        <p>A considered interface kit concept for building clearer forms and product flows.</p>
-        <div class="product-status"><strong>Concept</strong><span>Explore ↗</span></div>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Subtitle%20Doctor">
+        <div class="portfolio-product-image"><img src="shop-assets/products/subtitle-doctor.svg" alt="Subtitle Doctor caption workflow concept" loading="lazy"></div>
+        <span class="product-kicker">02 / Creator workflow</span><h3>Subtitle Doctor</h3><p>A subtitle quality-control concept for cleaner SRT files and editing timelines.</p>
+        <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="/shop#products">
-        <div class="portfolio-product-image"><img src="shop-assets/products/brandboard.svg" alt="Brandboard identity artwork" loading="lazy"></div>
-        <span class="product-kicker">03 / Brand systems</span><h3>Brandboard</h3>
-        <p>A compact identity workspace concept for keeping visual systems consistent.</p>
-        <div class="product-status"><strong>Concept</strong><span>Explore ↗</span></div>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Form%20UI%20Kit">
+        <div class="portfolio-product-image"><img src="shop-assets/products/form-ui-kit.svg" alt="Form UI Kit interface concept" loading="lazy"></div>
+        <span class="product-kicker">03 / UI systems</span><h3>Form / UI Kit</h3><p>A considered interface starter kit for consistent components and faster handoff.</p>
+        <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
+      </a>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Launchpad">
+        <div class="portfolio-product-image"><img src="shop-assets/products/launchpad.svg" alt="Launchpad web starter concept" loading="lazy"></div>
+        <span class="product-kicker">04 / Web tools</span><h3>Launchpad</h3><p>A responsive foundation concept for portfolios, product launches and small businesses.</p>
+        <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
+      </a>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Impact%20Zoom">
+        <div class="portfolio-product-image"><img src="shop-assets/products/impact-zoom.svg" alt="Impact Zoom motion concept" loading="lazy"></div>
+        <span class="product-kicker">05 / Motion and video</span><h3>Impact Zoom</h3><p>Adjustable zoom punches and impact movement for moments that need more weight.</p>
+        <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
+      </a>
+      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Brandboard">
+        <div class="portfolio-product-image"><img src="shop-assets/products/brandboard.svg" alt="Brandboard identity system concept" loading="lazy"></div>
+        <span class="product-kicker">06 / Brand systems</span><h3>Brandboard</h3><p>A compact visual identity workspace concept for consistent brand communication.</p>
+        <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
       </a>
     </div>
   </div>
@@ -523,8 +568,8 @@ const SITE_CONTENT = {
   },
 
   about: {
-    quoteHtml: "I'm <strong>Surya</strong>. I don't hand a campaign to a designer, or a design to an analyst <span class=\"mark\">—</span> I do both, end to end.",
-    paragraph2: "Currently finishing an MBA in Marketing and IT Analytics in Chennai. My internships gave me the marketing side: SEO, Ad campaigns, GA4 reporting, e-commerce end to end operations. My personal projects gave me the design side: interfaces and prototypes built in Figma, Webflow, Wix, and Framer.",
+    quoteHtml: "I'm <strong>Surya</strong>. I don't hand a campaign to a designer, or a design to an analyst <span class=\"mark\">-</span> I do both, end to end.",
+    paragraph2: "I bring marketing and design together: SEO, campaign execution, GA4 reporting and e-commerce operations, alongside interfaces and prototypes built with Figma, Webflow, Wix and Framer.",
     stats: [
       { number: "3", label: "MARKETING & DESIGN INTERNSHIPS" },
       { number: "5+", label: "CAMPAIGN & UI PROJECTS SHIPPED" },
@@ -542,14 +587,14 @@ const SITE_CONTENT = {
       category: "marketing", categoryLabel: "Marketing", group: "Webflow", year: "2025",
       title: "Webflow portfolio v1",
       image: "assets/Port1.png",
-      description: "Early Webflow portfolio build — a compact showcase of templates and experiments.",
+      description: "Early Webflow portfolio build - a compact showcase of templates and experiments.",
       tags: ["Webflow","Portfolio"],
       metrics: [{ value: "1", label: "snapshot" }],
       liveUrl: "https://suryas-portfolio-site-77.webflow.io/"
     },
     {
       category: "marketing", categoryLabel: "Landing page marketing", group: "Landing pages", year: "2026",
-      title: "ProjectWeb — Apple landing page", image: "assets/Apple.png",
+      title: "ProjectWeb - Apple landing page", image: "assets/Apple.png",
       description: "A live landing page project focused on premium spacing, strong hierarchy, and a simple conversion path.",
       tags: ["Landing page", "Visual hierarchy", "Live project"],
       metrics: [{ value: "1", label: "hero concept" }],
@@ -693,12 +738,12 @@ const SITE_CONTENT = {
   ],
 
   experience: [
-    { date: "Feb 2026 – Apr 2026", role: "E-Commerce & Digital Marketing Intern", org: "Thrise, Chennai", description: "Managed Shopify operations, ran on-page SEO, and monitored traffic and conversions weekly using GA4 and Google Tag Manager." },
-    { date: "Jun 2025 – Jul 2025", role: "Digital Marketing Intern", org: "Sulekha, Chennai", description: "Ran brand visibility audits for 80+ businesses and managed 80+ hyperlocal listings across microsites, tracking KPIs through Excel dashboards." },
-    { date: "Mar 2023 – Apr 2023", role: "Web Designer Intern", org: "Exposys Data Labs, Bangalore", description: "Built responsive web pages and worked with the design team to turn wireframes into functional, cross-device consistent pages." }
+    { date: "Feb 2026 - Apr 2026", role: "E-Commerce & Digital Marketing Intern", org: "Thrise, Chennai", description: "Managed Shopify operations, ran on-page SEO, and monitored traffic and conversions weekly using GA4 and Google Tag Manager." },
+    { date: "Jun 2025 - Jul 2025", role: "Digital Marketing Intern", org: "Sulekha, Chennai", description: "Ran brand visibility audits for 80+ businesses and managed 80+ hyperlocal listings across microsites, tracking KPIs through Excel dashboards." },
+    { date: "Mar 2023 - Apr 2023", role: "Web Designer Intern", org: "Exposys Data Labs, Bangalore", description: "Built responsive web pages and worked with the design team to turn wireframes into functional, cross-device consistent pages." }
   ],
 
-  contact: { titleHtml: "Let's make something <span class=\"u\">worth measuring.</span>", email: "suryalh44@gmail.com" },
+  contact: { titleHtml: "Let's make something <span class=\"u\">worth measuring.</span>", email: "suryslh44@gmail.com" },
 
   social: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/surya-g-b08a83215" },
@@ -1067,7 +1112,7 @@ if (isFinePointer){
   }
 
   // Open Graph
-  upsertMeta('og:title', SITE_CONTENT.name + ' — Digital Marketer & UI/UX Designer', 'property');
+  upsertMeta('og:title', SITE_CONTENT.name + ' - Digital Marketer & UI/UX Designer', 'property');
   upsertMeta('og:description', shortDesc, 'property');
   upsertMeta('og:type', 'website', 'property');
   upsertMeta('og:url', window.location.href, 'property');
@@ -1076,11 +1121,11 @@ if (isFinePointer){
 
   // Twitter card
   upsertMeta('twitter:card', 'summary_large_image');
-  upsertMeta('twitter:title', SITE_CONTENT.name + ' — Digital Marketer & UI/UX Designer');
+  upsertMeta('twitter:title', SITE_CONTENT.name + ' - Digital Marketer & UI/UX Designer');
   upsertMeta('twitter:description', shortDesc);
   if(firstImage) upsertMeta('twitter:image', new URL(firstImage, window.location.href).href);
 
-  // sitemap link (template) — update after deploying
+  // sitemap link (template) - update after deploying
   if (!document.querySelector('link[rel="sitemap"]')){
     const s = document.createElement('link'); s.rel = 'sitemap'; s.href = 'sitemap.xml'; document.head.appendChild(s);
   }
