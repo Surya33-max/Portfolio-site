@@ -9,8 +9,8 @@
 <meta property="og:description" content="Marketing strategy, thoughtful interfaces and creator tools from Arqora Studio.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#13140F">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/Apple.png">
+<link rel="icon" type="image/svg+xml" href="assets/brand/arqora-mark.svg">
+<link rel="apple-touch-icon" href="assets/brand/arqora-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -431,6 +431,56 @@ footer{border-top:1px solid var(--line)}
   .project-category.cat-design .project-card .project-media img{padding:10px}
 }
 
+
+/* ---------- COMPACT PROJECT QUEUE + ARQORA MARKETPLACE ---------- */
+.work-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 28px;
+  border-top:1px solid var(--line);
+  margin-top:26px;
+}
+.work-row{
+  grid-template-columns:32px minmax(0,1fr) auto 18px;
+  gap:14px;
+  padding:20px 0;
+  min-width:0;
+}
+.work-row-title{font-size:clamp(17px,1.7vw,23px);gap:8px}
+.work-row-cat{font-size:9px}
+.work-row-year{display:none}
+.work-row-arrow{font-size:16px}
+.portfolio-shop{padding:76px 0}
+.portfolio-shop .section-head{margin-bottom:30px}
+.portfolio-shop .section-head>div{max-width:760px}
+.portfolio-shop .project-note{max-width:620px;margin-top:14px;font-size:14px;line-height:1.7;color:var(--ink-soft)}
+.portfolio-shop-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.portfolio-product-card{padding:10px;border-radius:14px;background:rgba(255,255,255,.72);box-shadow:0 5px 18px rgba(32,35,52,.035)}
+.portfolio-product-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(32,35,52,.09)}
+.portfolio-product-image{aspect-ratio:1.65;margin-bottom:12px;border-radius:9px;background:#e8e9f1}
+.portfolio-product-card .product-kicker{font-size:9px;letter-spacing:.07em}
+.portfolio-product-card h3{font-size:clamp(18px,1.7vw,23px);margin:7px 0}
+.portfolio-product-card p{font-size:12px;line-height:1.55;margin-bottom:12px}
+.portfolio-product-card .product-status{padding-top:10px;font-size:9px}
+.portfolio-shop .shop-all{border-radius:999px;padding:11px 15px;font-size:10px}
+.nav-mark .nav-icon{object-fit:contain;background:#fff;padding:2px}
+@media(max-width:1000px){
+ .portfolio-shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .work-list{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+ .portfolio-shop{padding:60px 0}
+ .portfolio-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .portfolio-shop .section-head{gap:18px}
+ .portfolio-shop .shop-all{width:auto;justify-content:center}
+ .portfolio-product-card{padding:9px}
+ .portfolio-product-card h3{font-size:19px}
+ .portfolio-product-card p{font-size:11px}
+ .work-row{grid-template-columns:25px minmax(0,1fr) 16px;gap:10px;padding:16px 0}
+ .work-row-cat{display:none}
+}
+@media(max-width:420px){.portfolio-shop-grid{grid-template-columns:1fr}.portfolio-product-image{aspect-ratio:1.9}}
+
 </style>
 </head>
 <body>
@@ -542,34 +592,34 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="section-tag"><span class="n">04</span> Arqora Studio / Digital products</div>
-        <h2 class="section-title reveal">Ideas from the portfolio, built into useful tools.</h2>
-        <p class="project-note reveal">Arqora is my independent digital studio for creator tools, interface systems and web experiences. It lives here alongside my marketing and design work, not on a separate site.</p>
+        <div class="section-tag"><span class="n">04</span> Arqora Studio / Design marketplace</div>
+        <h2 class="section-title reveal">Designs, creator tools and digital assets.</h2>
+        <p class="project-note reveal">Browse selected visual work, creator tools and digital concepts from Arqora Studio. Public listings show the finished output; editable working files stay private.</p>
       </div>
-      <a class="shop-all magnetic" href="#contact">Discuss a project <span aria-hidden="true">↗</span></a>
+      <a class="shop-all magnetic" href="#contact">Browse the collection <span aria-hidden="true">↗</span></a>
     </div>
     <div class="portfolio-shop-grid">
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20WhipRush">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20WhipRush">
         <div class="portfolio-product-image"><img src="shop-assets/products/whiprush.svg" alt="WhipRush motion effect concept" loading="lazy"></div>
         <span class="product-kicker">01 / Motion and video</span><h3>WhipRush</h3><p>A directional whip transition concept for punchy DaVinci Resolve Fusion edits.</p>
         <div class="product-status"><strong>Plugin build</strong><span>Project ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Subtitle%20Doctor">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20Subtitle%20Doctor">
         <div class="portfolio-product-image"><img src="shop-assets/products/subtitle-doctor.svg" alt="Subtitle Doctor caption workflow concept" loading="lazy"></div>
         <span class="product-kicker">02 / Creator workflow</span><h3>Subtitle Doctor</h3><p>A subtitle quality-control concept for cleaner SRT files and editing timelines.</p>
         <div class="product-status"><strong>Prototype build</strong><span>Project ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Form%20UI%20Kit">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20Form%20UI%20Kit">
         <div class="portfolio-product-image"><img src="shop-assets/products/form-ui-kit.svg" alt="Form UI Kit interface concept" loading="lazy"></div>
         <span class="product-kicker">03 / UI systems</span><h3>Form / UI Kit</h3><p>A considered interface starter kit for consistent components and faster handoff.</p>
         <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Launchpad">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20Launchpad">
         <div class="portfolio-product-image"><img src="shop-assets/products/launchpad.svg" alt="Launchpad web starter concept" loading="lazy"></div>
         <span class="product-kicker">04 / Web tools</span><h3>Launchpad</h3><p>A responsive foundation concept for portfolios, product launches and small businesses.</p>
         <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Impact%20Zoom">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20Impact%20Zoom">
         <div class="portfolio-product-image"><img src="shop-assets/products/impact-zoom.svg" alt="Impact Zoom motion concept" loading="lazy"></div>
         <span class="product-kicker">05 / Motion and video</span><h3>Impact Zoom</h3><p>Adjustable zoom punches and impact movement for moments that need more weight.</p>
         <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
@@ -589,7 +639,7 @@ src="https://www.facebook.com/tr?id=1338970165009215&ev=PageView&noscript=1"
         <span class="product-kicker">09 / Motion and video</span><h3>Reels FX Pack</h3><p>A reusable set of motion treatments for short-form edits, alongside the WhipRush transition build.</p>
         <div class="product-status"><strong>Personal build</strong><span>Project ↗</span></div>
       </a>
-      <a class="portfolio-product-card" href="mailto:suryslh44@gmail.com?subject=Arqora%20Studio%20-%20Brandboard">
+      <a class="portfolio-product-card" href="mailto:suryalh44@gmail.com?subject=Arqora%20Studio%20-%20Brandboard">
         <div class="portfolio-product-image"><img src="shop-assets/products/brandboard.svg" alt="Brandboard identity system concept" loading="lazy"></div>
         <span class="product-kicker">06 / Brand systems</span><h3>Brandboard</h3><p>A compact visual identity workspace concept for consistent brand communication.</p>
         <div class="product-status"><strong>Concept</strong><span>Enquire ↗</span></div>
@@ -840,7 +890,7 @@ const SITE_CONTENT = {
     { date: "Mar 2023 - Apr 2023", role: "Web Designer Intern", org: "Exposys Data Labs, Bangalore", description: "Built responsive web pages and worked with the design team to turn wireframes into functional, cross-device consistent pages." }
   ],
 
-  contact: { titleHtml: "Let's make something <span class=\"u\">worth measuring.</span>", email: "suryslh44@gmail.com" },
+  contact: { titleHtml: "Let's make something <span class=\"u\">worth measuring.</span>", email: "suryalh44@gmail.com" },
 
   social: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/surya-g-b08a83215" },
