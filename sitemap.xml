@@ -4,8 +4,4 @@
     <loc>https://portfoliosite-ashen.vercel.app/</loc>
     <priority>1.00</priority>
   </url>
-  <url>
-    <loc>https://portfoliosite-ashen.vercel.app/shop</loc>
-    <priority>0.90</priority>
-  </url>
 </urlset>
