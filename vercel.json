@@ -1,12 +1,12 @@
 {
-  "redirects": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
     {
       "source": "/shop",
-      "destination": "/#shop",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
+      "destination": "/shop.html"
+    },
     {
       "source": "/",
       "destination": "/surya-portfolio-v2.html"
